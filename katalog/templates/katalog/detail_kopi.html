@@ -1,0 +1,15 @@
+{% extends 'katalog/base.html' %}
+{% block content %}
+<h2>{{ kopi.nama }}</h2>
+<p><strong>Asal:</strong> {{ kopi.asal }}</p>
+<p><strong>Deskripsi:</strong> {{ kopi.deskripsi }}</p>
+<p><strong>Harga:</strong> Rp {{ kopi.harga }}</p>
+
+{% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'edit_kopi' kopi.id %}">Edit</a> |
+        <a href="{% url 'hapus_kopi' kopi.id %}">Hapus</a>
+    </p>
+{% endif %}
+{% endblock %}
+

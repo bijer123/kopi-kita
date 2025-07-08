@@ -1,0 +1,12 @@
+{% extends 'katalog/base.html' %}
+{% block content %}
+<h2 style="color: purple;">Tambah Kopi</h2>
+
+<form method="post" enctype="multipart/form-data" style="max-width: 400px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="padding: 8px 16px; background-color: purple; color: white; border: none; border-radius: 5px;">Simpan</button>
+</form>
+{% endblock %}
+
+

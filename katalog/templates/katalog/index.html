@@ -1,0 +1,25 @@
+{% extends 'katalog/base.html' %}
+{% block content %}
+<h2>Daftar Kopi</h2>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
+  {% for kopi in daftar_kopi %}
+    <div style="border: 1px solid #ccc; padding: 12px; border-radius: 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.1); background-color: #fdfdfd;">
+      {% if kopi.gambar %}
+        <img src="{{ kopi.gambar.url }}" width="100%" style="border-radius: 8px;" />
+      {% else %}
+        <img src="https://via.placeholder.com/250x160?text=Kopi" width="100%" style="border-radius: 8px;" />
+      {% endif %}
+      <h3 style="color: purple; margin: 8px 0;">{{ kopi.nama }}</h3>
+      <p><strong>Asal:</strong> {{ kopi.asal }}</p>
+      <p><strong>Harga:</strong> Rp {{ kopi.harga }}</p>
+      <a href="{% url 'detail_kopi' kopi.id %}" style="color: purple;">Lihat Detail</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'tambah_kopi' %}" style="color: purple; display: inline-block; margin-top: 16px;">+ Tambah Kopi</a></p>
+{% endif %}
+{% endblock %}
+
